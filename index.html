@@ -18,6 +18,7 @@
       </ul>
     </header>
 
+    <button id="btnTemizle" class="button2">Temizle</button>
     <div id="sonuc" class="resultarea"></div>
 
     <script>
@@ -28,6 +29,12 @@
         sonuc.appendChild(paragraph);
         sonuc.scrollTop = sonuc.scrollHeight;
       }
+
+      document
+        .getElementById("btnTemizle")
+        .addEventListener("click", function () {
+          sonuc.innerHTML = "";
+        });
 
       document.getElementById("btnApp1").addEventListener("click", function () {
         var script = document.createElement("script");
