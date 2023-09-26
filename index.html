@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Nükleer Denemeleri</title>
+    <link rel="stylesheet" href="style.css" />
+    <style></style>
+  </head>
+  <body>
+    <header>
+      <ul>
+        <li><button id="btnApp1" class="button">Text</button></li>
+        <li><button id="btnApp2" class="button">Math</button></li>
+        <li><button id="btnApp3" class="button">Palindrom</button></li>
+        <li><button id="btnApp4" class="button">Seçme ve Seçilme</button></li>
+        <li><button id="btnApp5" class="button">Aylar</button></li>
+        <li><button id="btnApp6" class="button">Stok Durumu</button></li>
+        <li><button id="btnApp7" class="button">Diziler</button></li>
+      </ul>
+    </header>
+
+    <div id="sonuc" class="resultarea"></div>
+
+    <script>
+      var sonuc = document.getElementById("sonuc");
+      function writeToSonuc(text) {
+        var paragraph = document.createElement("p");
+        paragraph.textContent = text;
+        sonuc.appendChild(paragraph);
+        sonuc.scrollTop = sonuc.scrollHeight;
+      }
+
+      document.getElementById("btnApp1").addEventListener("click", function () {
+        var script = document.createElement("script");
+        script.src = "app1-text.js";
+        document.head.appendChild(script);
+        script.onload = function () {};
+      });
+
+      document.getElementById("btnApp2").addEventListener("click", function () {
+        var script = document.createElement("script");
+        script.src = "app2-math.js";
+        document.head.appendChild(script);
+        script.onload = function () {};
+      });
+
+      document.getElementById("btnApp3").addEventListener("click", function () {
+        var script = document.createElement("script");
+        script.src = "app3-palindrom.js";
+        document.head.appendChild(script);
+        script.onload = function () {};
+      });
+
+      document.getElementById("btnApp4").addEventListener("click", function () {
+        var script = document.createElement("script");
+        script.src = "app4-secim.js";
+        document.head.appendChild(script);
+        script.onload = function () {};
+      });
+
+      document.getElementById("btnApp5").addEventListener("click", function () {
+        var script = document.createElement("script");
+        script.src = "app5-aylar.js";
+        document.head.appendChild(script);
+        script.onload = function () {};
+      });
+
+      document.getElementById("btnApp6").addEventListener("click", function () {
+        var script = document.createElement("script");
+        script.src = "app6-stok.js";
+        document.head.appendChild(script);
+        script.onload = function () {};
+      });
+
+      document.getElementById("btnApp7").addEventListener("click", function () {
+        var script = document.createElement("script");
+        script.src = "app7-arrays.js";
+        document.head.appendChild(script);
+        script.onload = function () {};
+      });
+    </script>
+    <footer>
+      <label
+        ><p>
+          &copy; 2023
+          <a href="mailto:ahmetakkoyun.ce@gmail.com">Ahmet Akkoyun</a>
+        </p></label
+      >
+    </footer>
+  </body>
+</html>
