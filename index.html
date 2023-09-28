@@ -8,23 +8,96 @@
   <body>
     <header>
       <ul>
-        <li><button id="btnApp1" class="button">Text</button></li>
-        <li><button id="btnApp2" class="button">Math</button></li>
-        <li><button id="btnApp3" class="button">Palindrom</button></li>
-        <li><button id="btnApp4" class="button">Seçme ve Seçilme</button></li>
-        <li><button id="btnApp5" class="button">Aylar</button></li>
-        <li><button id="btnApp6" class="button">Stok Durumu</button></li>
-        <li><button id="btnApp7" class="button">Diziler</button></li>
-        <li><button id="btnApp8" class="button">Toplam</button></li>
-        <li><button id="btnApp9" class="button">Karneler</button></li>
+        <div class="scroll-button left-scroll-button">&lt;</div>
+        <li>
+          <button class="button" onclick="loadScript('app1-text.js')">
+            Text
+          </button>
+        </li>
+        <li>
+          <button class="button" onclick="loadScript('app2-math.js')">
+            Math
+          </button>
+        </li>
+        <li>
+          <button class="button" onclick="loadScript('app3-palindrom.js')">
+            Palindrom
+          </button>
+        </li>
+        <li>
+          <button class="button" onclick="loadScript('app4-secim.js')">
+            Seçme ve Seçilme
+          </button>
+        </li>
+        <li>
+          <button class="button" onclick="loadScript('app5-aylar.js')">
+            Aylar
+          </button>
+        </li>
+        <li>
+          <button class="button" onclick="loadScript('app6-stok.js')">
+            Stok Durumu
+          </button>
+        </li>
+        <li>
+          <button class="button" onclick="loadScript('app7-arrays.js')">
+            Diziler
+          </button>
+        </li>
+        <li>
+          <button class="button" onclick="loadScript('app8-toplam.js')">
+            Toplam
+          </button>
+        </li>
+        <li>
+          <button class="button" onclick="loadScript('app9-karneler.js')">
+            Karneler
+          </button>
+        </li>
+        <div class="scroll-button right-scroll-button">&gt;</div>
       </ul>
     </header>
 
-    <button id="btnTemizle" class="button2">Temizle</button>
-    <div id="sonuc" class="resultarea"></div>
+    <div class="result">
+      <button class="cleanbutton" onclick="clearResults()">Temizle</button>
+      <div id="sonuc" class="resultarea"></div>
+    </div>
 
     <script>
       var sonuc = document.getElementById("sonuc");
+      var ul = document.querySelector("header ul");
+      var scrollPosition = 0;
+
+      function scrollHorizontally(direction) {
+        if (direction === "right") {
+          scrollPosition += 100;
+        } else if (direction === "left") {
+          scrollPosition -= 100;
+        }
+
+        scrollPosition = Math.min(
+          ul.scrollWidth - ul.clientWidth,
+          Math.max(0, scrollPosition)
+        );
+
+        ul.scrollTo({
+          left: scrollPosition,
+          behavior: "smooth",
+        });
+      }
+
+      document
+        .querySelector(".right-scroll-button")
+        .addEventListener("click", function () {
+          scrollHorizontally("right");
+        });
+
+      document
+        .querySelector(".left-scroll-button")
+        .addEventListener("click", function () {
+          scrollHorizontally("left");
+        });
+
       function writeToSonuc(text) {
         var paragraph = document.createElement("p");
         paragraph.textContent = text;
@@ -32,74 +105,15 @@
         sonuc.scrollTop = sonuc.scrollHeight;
       }
 
-      document
-        .getElementById("btnTemizle")
-        .addEventListener("click", function () {
-          sonuc.innerHTML = "";
-        });
-
-      document.getElementById("btnApp1").addEventListener("click", function () {
+      function loadScript(scriptName) {
         var script = document.createElement("script");
-        script.src = "js/app1-text.js";
+        script.src = "js/" + scriptName;
         document.head.appendChild(script);
-        script.onload = function () {};
-      });
+      }
 
-      document.getElementById("btnApp2").addEventListener("click", function () {
-        var script = document.createElement("script");
-        script.src = "js/app2-math.js";
-        document.head.appendChild(script);
-        script.onload = function () {};
-      });
-
-      document.getElementById("btnApp3").addEventListener("click", function () {
-        var script = document.createElement("script");
-        script.src = "js/app3-palindrom.js";
-        document.head.appendChild(script);
-        script.onload = function () {};
-      });
-
-      document.getElementById("btnApp4").addEventListener("click", function () {
-        var script = document.createElement("script");
-        script.src = "js/app4-secim.js";
-        document.head.appendChild(script);
-        script.onload = function () {};
-      });
-
-      document.getElementById("btnApp5").addEventListener("click", function () {
-        var script = document.createElement("script");
-        script.src = "js/app5-aylar.js";
-        document.head.appendChild(script);
-        script.onload = function () {};
-      });
-
-      document.getElementById("btnApp6").addEventListener("click", function () {
-        var script = document.createElement("script");
-        script.src = "js/app6-stok.js";
-        document.head.appendChild(script);
-        script.onload = function () {};
-      });
-
-      document.getElementById("btnApp7").addEventListener("click", function () {
-        var script = document.createElement("script");
-        script.src = "js/app7-arrays.js";
-        document.head.appendChild(script);
-        script.onload = function () {};
-      });
-
-      document.getElementById("btnApp8").addEventListener("click", function () {
-        var script = document.createElement("script");
-        script.src = "js/app8-toplam.js";
-        document.head.appendChild(script);
-        script.onload = function () {};
-      });
-
-      document.getElementById("btnApp9").addEventListener("click", function () {
-        var script = document.createElement("script");
-        script.src = "js/app9-karneler.js";
-        document.head.appendChild(script);
-        script.onload = function () {};
-      });
+      function clearResults() {
+        document.getElementById("sonuc").innerHTML = "";
+      }
     </script>
     <footer>
       <label
